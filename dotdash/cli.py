@@ -10,9 +10,17 @@ def main():
 
 
 @click.command()
-def init():
-    """Initialize current directory as your dotfiles directory."""
-    click.echo("Init")
+@click.argument("dir",
+                required=False,
+                type=click.Path(exists=True),
+)
+def init(dir):
+    """Initialize directory DIR as your dotfiles directory. Default is CWD."""
+
+    if not dir:
+        dir = "."  # CWD
+
+    click.echo(f"Init {dir}")
 
 
 @click.command()
