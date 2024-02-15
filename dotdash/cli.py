@@ -6,17 +6,21 @@ import click
 @click.group()
 @click.version_option()
 def main():
+    """Main command group."""
     pass
 
 
 @click.command()
-@click.argument("dir",
-                required=False,
-                type=click.Path(exists=True),
+@click.argument(
+    "dir",
+    required=False,
+    type=click.Path(exists=True),
 )
 def init(dir):
-    """Initialize directory DIR as your dotfiles directory. Default is CWD."""
+    """Initialize directory DIR as your dotfiles directory.
 
+    Default is CWD.
+    """
     if not dir:
         dir = "."  # CWD
 
@@ -24,20 +28,21 @@ def init(dir):
 
 
 @click.command()
-@click.argument("path",
-                required=True,
-                type=click.Path(exists=True),
+@click.argument(
+    "path",
+    required=True,
+    type=click.Path(exists=True),
 )
 def adopt(path):
-    """Move file or directory PATH to dotfiles dir, replacing it with a symlink.
-    """
+    """Move file or directory PATH to dotfiles dir, replacing it with a symlink."""
     click.echo(f"Adopt {click.format_filename(path)}")
 
 
 @click.command()
-@click.argument("path",
-                required=True,
-                type=click.Path(exists=True),
+@click.argument(
+    "path",
+    required=True,
+    type=click.Path(exists=True),
 )
 def evict(path):
     """Move file or directory PATH back to its original location."""
@@ -45,26 +50,29 @@ def evict(path):
 
 
 @click.command()
-@click.argument("source",
-                required=True,
-                type=click.Path(exists=True),
+@click.argument(
+    "source",
+    required=True,
+    type=click.Path(exists=True),
 )
-@click.argument("target",
-                required=True,
-                type=click.Path(),
+@click.argument(
+    "target",
+    required=True,
+    type=click.Path(),
 )
 def mv(source, target):
-    ## TODO! Alias move
-    """Move the symlink, file or directory SOURCE, updating the filesystem to
-    reflect the changes.
+    """Move the symlink, file or directory SOURCE in a synced fasion.
+
+    Symlinks and dotfiles will be updated to reflect changes.
     """
     click.echo(f"Move {source}, {target}")
 
 
 @click.command()
-@click.argument("filename",
-                required=False,
-                type=click.Path(writable=True),
+@click.argument(
+    "filename",
+    required=False,
+    type=click.Path(writable=True),
 )
 def archive(filename):
     """Archive dotfiles dir to FILENAME. Default is dotfiles-{date}.tar.gz."""
@@ -79,9 +87,10 @@ def reset(force=False):
 
 
 @click.command()
-@click.argument("path",
-                required=False,
-                type=click.Path(exists=True),
+@click.argument(
+    "path",
+    required=False,
+    type=click.Path(exists=True),
 )
 @click.option("force", "--force", flag_value=True, help="Force synchronization")
 @click.option("skip_git", "--skip-git", flag_value=True, help="Skip Git pull, commit, push")
