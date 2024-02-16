@@ -2,6 +2,8 @@
 """Tests for `dotdash` package."""
 
 import pytest
+import re
+
 from click.testing import CliRunner
 
 from dotdash import cli, __version__
@@ -21,7 +23,6 @@ def test_content(response):
     # from bs4 import BeautifulSoup
     # assert 'GitHub' in BeautifulSoup(response.content).title.string
     del response
-
 
 def test_command_line_interface():
     """Test the CLI."""
@@ -54,4 +55,6 @@ def test_commands_exists():
     for cmd in commands:
         runner = CliRunner()
         result = runner.invoke(cli.main, [cmd, "--help"])
-        assert result.exit_code == 0
+        assert result.exit_code == 0, \
+            f"Command {cmd}, expected exit code 0, got {result.exit_code}"
+
