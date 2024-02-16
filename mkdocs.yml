@@ -1,8 +1,7 @@
-site_name: Dotdash
+site_name:
 site_url: https://andergrim.github.io/dotdash
 repo_url: https://github.com/andergrim/dotdash
 repo_name: andergrim/dotdash
-#strict: true
 nav:
   - Home: index.md
   - Installation: installation.md
@@ -23,7 +22,6 @@ theme:
     - navigation.instant
     - navigation.tabs.sticky
 markdown_extensions:
-  # - pymdownx.emoji:
   - material.extensions.emoji.twemoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -50,9 +48,6 @@ plugins:
   - include-markdown
   - search:
       lang: en
-  - mkdocstrings:
-      watch:
-        - dotdash
 extra:
   social:
     - icon: fontawesome/brands/twitter
@@ -68,9 +63,3 @@ extra:
       name: Github
     - icon: material/email
       link: "mailto:andergrim@gmail.com"
-  # to enable disqus, uncomment the following and put your disqus id below
-  # disqus: disqus_id
-# uncomment the following and put your google tracking id below to enable GA
-#google_analytics:
-  #- UA-xxx
-  #- auto
