@@ -37,7 +37,7 @@ def test_command_line_interface():
     assert f'main, version {__version__}' in version_result.output
 
 def test_commands_exists():
-    """Test existence of each command"""
+    """Test existence of each command."""
     commands = [
         "adopt",
         "archive",
