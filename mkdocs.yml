@@ -1,4 +1,4 @@
-site_name:
+site_name: Dotdash
 site_url: https://andergrim.github.io/dotdash
 repo_url: https://github.com/andergrim/dotdash
 repo_name: andergrim/dotdash
@@ -22,9 +22,12 @@ theme:
     - navigation.instant
     - navigation.tabs.sticky
 markdown_extensions:
-  - material.extensions.emoji.twemoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  # - material.extensions.emoji.twemoji:
+  #     emoji_index: !!python/name:materialx.emoji.twemoji
+  #     emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.critic
   - pymdownx.caret
   - pymdownx.mark
