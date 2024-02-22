@@ -2,8 +2,6 @@
 """Tests for `dotdash` package."""
 import pytest
 import os
-import shutil
-from pathlib import Path
 
 from click.testing import CliRunner
 
