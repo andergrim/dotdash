@@ -20,12 +20,6 @@ def temp_dotfiles(temp_home):
     conf_dir.mkdir(parents=True, exist_ok=True)
     return conf_dir
 
-@pytest.fixture(autouse=True)
-def mock_dotfiles_location(monkeypatch, temp_dotfiles):
-    os.environ["DOTFILES"] = str(temp_dotfiles)
-    monkeypatch.setenv("DOTFILES", str(temp_dotfiles))
-
-
 """ CLI sanity checks """
 def test_command_line_interface():
     """Test the CLI."""
@@ -62,24 +56,15 @@ def test_commands_exists():
             f"Command {cmd}, expected exit code 0, got {result.exit_code}"
 
 """ Configuration """
-def test_no_config_shows_not_initialized_notice():
-    runner = CliRunner()
-    result = runner.invoke(cli.main)
-    assert "No dotfiles directory initialized, use dotdash init" in result.output
+def test_no_config_return_empty_config():
+    cfg = cli.get_config()
+    assert len(cfg) == 0
 
-def test_correct_config_shows_dirname():
-    env = os.environ.copy()
-    env["DOTFILES"] = str(temp_dotfiles)
-    runner = CliRunner(env=env)
-    result = runner.invoke(cli.main)
+def test_correct_config_finds_dotfiles_dir(temp_dotfiles):
+    dotfiles_dir = str(temp_dotfiles)
+    os.environ["DOTFILES"] = dotfiles_dir
 
-    assert f"Dotfiles directory is {str(temp_dotfiles)}" in result.output
+    cfg = cli.get_config()
+    assert cfg["DOTFILES"] == dotfiles_dir
+    os.environ["DOTFILES"] = ""
 
-def test_bad_config_shows_does_not_exists():
-    # monkeypatch.setenv("DOTFILES", "~/notfiles")
-    os.environ["DOTFILES"] = str(temp_dotfiles)
-
-    runner = CliRunner()
-    result = runner.invoke(cli.main)
-    assert "Configured directory ~/notfiles does not exist" in result.output
-    # monkeypatch.delenv("DOTFILES")
