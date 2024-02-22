@@ -7,31 +7,22 @@ import click
 
 from dotdash.dotdash import get_config
 
-
 COMMAND_PATH = Path("dotdash/commands/")
 CONFIG = get_config()
 DOTFILES = CONFIG.get("DOTFILES")
 
 if not DOTFILES:
-    epilog = click.style(
-        "No dotfiles directory initialized, use dotdash init",
-        fg="red"
-    )
+    epilog = click.style("No dotfiles directory initialized, use dotdash init", fg="red")
     DOTFILES_FULL = None
 else:
     DOTFILES_FULL = Path(DOTFILES).expanduser()
     epilog = ""
 
 if DOTFILES_FULL and DOTFILES_FULL.exists():
-    epilog = click.style(
-        f"Dotfiles directory is {DOTFILES}",
-        fg="green"
-    )
+    epilog = click.style(f"Dotfiles directory is {DOTFILES}", fg="green")
 elif DOTFILES_FULL:
-    epilog = click.style(
-        f"Configured directory {DOTFILES} does not exist",
-        fg="red"
-    )
+    epilog = click.style(f"Configured directory {DOTFILES} does not exist", fg="red")
+
 
 @click.group(epilog=epilog)
 @click.version_option()

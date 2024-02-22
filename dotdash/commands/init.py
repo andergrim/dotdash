@@ -17,4 +17,3 @@ def init(dir):
         dir = "."  # CWD
 
     click.echo(f"Init {dir}")
-

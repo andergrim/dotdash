@@ -19,4 +19,3 @@ def mv(source, target):
     Symlinks and dotfiles will be updated to reflect changes.
     """
     click.echo(f"Move {source}, {target}")
-

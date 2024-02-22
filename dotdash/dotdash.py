@@ -1,16 +1,14 @@
 """Common helper functions."""
 import os
-from typing import Dict
 from pathlib import Path
+from typing import Dict
 
 from dotenv import dotenv_values
 
-
-CONFIG_VALUES = [
-    "DOTFILES"
-]
+CONFIG_VALUES = ["DOTFILES"]
 
 CONFIG_DEFAULT = Path.home() / ".dotfiles-dir"
+
 
 def get_config() -> Dict:
     """Return configuration values from all sources."""

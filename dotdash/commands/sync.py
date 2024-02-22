@@ -13,4 +13,3 @@ import click
 def sync(path, force=False, skip_git=False):
     """Make sure all symlinks are correct, update and commit to Git."""
     click.echo(f"Sync {path}, {force}, {skip_git}")
-

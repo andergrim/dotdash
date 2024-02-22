@@ -7,4 +7,3 @@ import click
 def reset(force=False):
     """Remove all symlinks created by dotdash."""
     click.echo(f"Reset {force}")
-

@@ -11,4 +11,3 @@ import click
 def evict(path):
     """Move file or directory PATH back to its original location."""
     click.echo(f"Evict {click.format_filename(path)}")
-
