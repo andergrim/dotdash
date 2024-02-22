@@ -1,3 +1,4 @@
+"""This module contains the init command and its functions."""
 import click
 
 

@@ -1,3 +1,4 @@
+"""This module contains the evict command and its functions."""
 import click
 
 

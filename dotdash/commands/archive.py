@@ -1,3 +1,4 @@
+"""This module contains the archive command and its functions."""
 import click
 
 

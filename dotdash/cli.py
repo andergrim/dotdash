@@ -36,6 +36,7 @@ elif DOTFILES_FULL:
 @click.group(epilog=epilog)
 @click.version_option()
 def main():
+    """Main entrypoint function."""
     pass
 
 
@@ -43,7 +44,7 @@ if __name__ == "__main__":
     main()  # pragma: no cover
 
 for mod_path in COMMAND_PATH.glob("*.py"):
-    mod_name = re.sub(f"/", ".", str(mod_path)).rpartition(".py")[0]
+    mod_name = re.sub("/", ".", str(mod_path)).rpartition(".py")[0]
     mod = importlib.import_module(mod_name)
 
     for attr in dir(mod):

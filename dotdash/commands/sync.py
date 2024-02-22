@@ -1,3 +1,4 @@
+"""This module contains the sync command and its functions."""
 import click
 
 

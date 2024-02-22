@@ -10,10 +10,12 @@ from dotdash import cli, __version__
 """ Helpers """
 @pytest.fixture(scope="session")
 def temp_home(tmp_path_factory):
+    """Create a home directory in temp dir."""
     return tmp_path_factory.mktemp("home") / "user"
 
 @pytest.fixture(scope="session")
 def temp_dotfiles(temp_home):
+    """Create a dotfiles dir in the home directory."""
     conf_dir = temp_home / "dotfiles"
     conf_dir.mkdir(parents=True, exist_ok=True)
     return conf_dir
@@ -55,10 +57,12 @@ def test_commands_exists():
 
 """ Configuration """
 def test_no_config_return_empty_config():
+    """With no config pointed out, config should be empty."""
     cfg = cli.get_config()
     assert len(cfg) == 0
 
 def test_correct_config_finds_dotfiles_dir(temp_dotfiles):
+    """With config set, should be retrievable."""
     dotfiles_dir = str(temp_dotfiles)
     os.environ["DOTFILES"] = dotfiles_dir
 

@@ -1,3 +1,4 @@
+"""This module contains the mv command and its functions."""
 import click
 
 

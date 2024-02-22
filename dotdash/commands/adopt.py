@@ -1,3 +1,4 @@
+"""This module contains the adopt command and its functions."""
 import click
 
 

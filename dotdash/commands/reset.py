@@ -1,3 +1,4 @@
+"""This module contains the reset command and its functions."""
 import click
 
 

@@ -1,3 +1,4 @@
+"""This module contains the check command and its functions."""
 import click
 
 
